@@ -23,7 +23,9 @@ console.log(arr[0]);
 arr.push("nyu"); // 추가하기
 console.log(arr);
 
-arr.pop(); // 삭제하기
+arr[1] = "oh"; // 변경하기
+
+arr.pop(); // 삭제하기. 맨끝만.
 console.log(arr);
 
 
@@ -40,3 +42,7 @@ console.log(user.fat);
 user.age = 7; // const지만 안의 내용 변경은 에러 발생하지 않는다. 전체 바꾸면 에러 발생. player = 7 의 경우 에러 발생.
 console.log(user.age);
 
+user.address = "모옵시 활발하구 냥냥동 5959번지" // 추가도 가능하다!
+console.log(user, console); // console도 객체다
+
+console.log(2**5) // 2의 5승
