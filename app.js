@@ -10,5 +10,16 @@ console.log(a*2); // 로그
 
 const amITall = null;
 let something; // undefined라고 나온다.
-
 console.log(something);
+
+
+// 배열 사용하기
+const arr = ["nya","ho","ha"];
+console.log(arr);
+console.log(arr[0]);
+
+arr.push("nyu"); // 추가하기
+console.log(arr);
+
+arr.pop(); // 삭제하기
+console.log(arr);
