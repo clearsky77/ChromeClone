@@ -1,14 +1,21 @@
+const title = document.querySelector("div.hello:first-child h1"); // 이렇게도 가능하다.
+console.dir(title);
 
+function handleTitleClick(){
+    console.log("クリックしました。");
+    title.style.color = "gray";
+}
 
- // CSS형식으로 찾기. .hello라는 class에 h1을 가져온다.
-const title = document.querySelector(".hello h1"); // 첫번째 element만 가져온다.
-const titleAll = document.querySelectorAll(".hello h1"); // 모든 element를 가져온다.
+function handleMouseEnter(){
+    console.log("마우스가 올라왔다.");
+    title.innerText = "마우스가 올라왔다."
+}
 
-const titleById = document.querySelector("#titleById");
-// const titleById = document.getElementById("titleById"); // 위와 이 라인은 같다. 그러나 getElementById로는 하위의 다른 것을 불러올 수 없다.
+function handleMouseLeave(){
+    console.log("마우스가 내려갔다.");
+    title.innerText = "마우스가 내려갔다."
+}
 
-// document.getElementById("hello"); // 이 방식은 class name이 hello인 것을 알아서 찾아오지만 헷갈린다.
-
-console.log(title);
-console.log(titleAll);
-console.log("titleById: "+titleById)
+title.addEventListener("click", handleTitleClick);
+title.addEventListener("mouseenter", handleMouseEnter);
+title.addEventListener("mouseleave", handleMouseLeave);
