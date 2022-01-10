@@ -1,3 +1,16 @@
 body {
     background-color: pink;
 }
+
+h1 {
+    color: cornflowerblue;
+    transition: color .5s ease-in-out;
+}
+
+.clicked {
+    color: tomato;
+}
+
+.original {
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}

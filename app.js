@@ -1,15 +1,12 @@
 const h1 = document.querySelector("div.hello:first-child h1"); // 이렇게도 가능하다.
-console.dir(h1);
 
 function handleTitleClick(){
-    const currentColor = h1.style.color;
-    let newColor;
-    if(currentColor === "gray"){
-        newColor = "tomato";
-    }else{
-        newColor = "gray";
+    const clickedClass = "clicked"
+    if(h1.classList.contains(clickedClass)){ // 만약 포함되어있으면
+        h1.classList.remove(clickedClass); // 지운다.
+    } else {
+        h1.classList.add(clickedClass);
     }
-    h1.style.color = newColor;
 }
 
 h1.addEventListener("click", handleTitleClick);
