@@ -1,16 +1,11 @@
+const loginForm = document.querySelector("#login-form");
 const loginInput = document.querySelector("#login-form input");
-const loginButton = document.querySelector("#login-form button");
 
-function onLoginBtnClick(){
-    console.log(loginInput.value);
-    const userName = loginInput.value;
-    // if(userName === ""){
-    //     alert("이름을 입력하세요.")
-    // }else if(userName.length > 15){
-    //     alert("이름은 15자 이내로 입력해주세요.") // html에 maxlength="15"를 하면 제한된다.
-    // }
-    
+function onLoginSubmit(event){ // submit 이벤트 후엔 자동으로 값을 넘겨준다
+    event.preventDefault(); // 이벤트 실행을 막는다. 새로고침 안됨.
+    console.log(event);
+    // const userName = loginInput.value;
+    // console.log(userName);
 }
 
-loginButton.addEventListener("click", onLoginBtnClick)
-
+loginForm.addEventListener("submit", onLoginSubmit); // 엔터나 버튼시 동작 -> 자동 새로고침
