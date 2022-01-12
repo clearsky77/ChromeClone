@@ -2,17 +2,35 @@ const loginForm = document.querySelector("#login-form");
 const loginInput = document.querySelector("#login-form input");
 const greeting = document.querySelector("#greeting");
 
+// 반복되는 String은 상수로
 const HIDDEN_CLASSNAME = "hidden";
+const USERNAME_KEY = "username"
 
 function onLoginSubmit(event){ // submit 이벤트 후엔 자동으로 값을 넘겨준다
     event.preventDefault(); // 이벤트 진행을 막는다. 자동 새로고침 안됨.
     const username = loginInput.value;
+    localStorage.setItem(USERNAME_KEY,username);
     console.log(username);
 
     loginForm.classList.add("hidden");
-    greeting.innerText = `${username}さん、こんにちは!`; // 아래와 같다. 백틱.
-    // greeting.innerText = username+"さん、こんにちは!";
+    paintGreetings(username);
+    
+}
+
+function paintGreetings(username){
+    greeting.innerText = `${username}さん、こんにちは!`;
     greeting.classList.remove(HIDDEN_CLASSNAME);
+}
+
+
+const savedUsername = localStorage.getItem(USERNAME_KEY);
+
+if(savedUsername === null ){ // username이 없으면
+    loginForm.classList.remove(HIDDEN_CLASSNAME);
+}else{ // 이미 username이 있으면
+    loginForm.classList.add("hidden"); // username을 입력받을 필요 없으니 hidden한다.
+    
+    paintGreetings(savedUsername);
 }
 
 loginForm.addEventListener("submit", onLoginSubmit); // 엔터나 버튼시 동작 -> 자동 새로고침
