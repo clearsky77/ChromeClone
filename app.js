@@ -8,12 +8,11 @@ const USERNAME_KEY = "username"
 
 function onLoginSubmit(event){ // submit 이벤트 후엔 자동으로 값을 넘겨준다
     event.preventDefault(); // 이벤트 진행을 막는다. 자동 새로고침 안됨.
-    const username = loginInput.value;
-    localStorage.setItem(USERNAME_KEY,username);
-    console.log(username);
+    const inputUsername = loginInput.value;
+    localStorage.setItem(USERNAME_KEY,inputUsername);
 
     loginForm.classList.add("hidden");
-    paintGreetings(username);
+    paintGreetings(inputUsername);
     
 }
 
@@ -29,7 +28,6 @@ if(savedUsername === null ){ // username이 없으면
     loginForm.classList.remove(HIDDEN_CLASSNAME);
 }else{ // 이미 username이 있으면
     loginForm.classList.add("hidden"); // username을 입력받을 필요 없으니 hidden한다.
-    
     paintGreetings(savedUsername);
 }
 
