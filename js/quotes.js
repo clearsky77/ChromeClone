@@ -15,16 +15,14 @@ const quotes = [
 
 
 const txtQuote = document.querySelector("#quote span:first-child");
-const txtAuthor = document.querySelector("#author span:last-child");
+const txtAuthor = document.querySelector("#quote span:last-child");
 const txtTodaysQuote = quotes[Math.floor(Math.random()*(quotes.length))];
-
-console.log(quotes[0]);
 
 txtQuote.innerText = txtTodaysQuote.quote;
 txtAuthor.innerText = txtTodaysQuote.author;
 
-console.log(Math.floor(Math.random()*(quotes.length)));
 console.log(txtTodaysQuote.quote);
+
 
 // Math.random // 10까지 랜덤
 // Math.ceil() // 무조건 올림
