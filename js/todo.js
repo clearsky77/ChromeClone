@@ -19,11 +19,12 @@ function deleteToDo(event){
 
 function paintToDo(newTodo){
     const li = document.createElement("li"); // li 엘리먼트를 생성
+    li.id = newTodo.id;
     const span = document.createElement("span"); // span 엘리먼트를 생성
     const button = document.createElement("button");
     button.innerText = "❌";
     button.addEventListener("click",deleteToDo); // 삭제 이벤트를 걸어준다.
-    span.innerText = newTodo;
+    span.innerText = newTodo.text;
     li.appendChild(span); // li가 span을 자식으로 둔다.
     li.appendChild(button);
     toDoList.appendChild(li);
@@ -34,8 +35,12 @@ function handleToDoSubmit(event){ // submit 이벤트 후엔 자동으로 값을
     event.preventDefault(); // 이벤트 진행을 막는다. 자동 새로고침 안됨.
     const newTodo = toDoInput.value;
     toDoInput.value = "";
-    toDos.push(newTodo);
-    paintToDo(newTodo);
+    const newTodoObj = {
+        text: newTodo,
+        id: Date.now(), // 고유번호부여
+    };
+    toDos.push(newTodoObj);
+    paintToDo(newTodoObj);
     saveToDo()
 }
 
