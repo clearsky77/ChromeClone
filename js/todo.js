@@ -2,12 +2,17 @@ const toDoForm = document.getElementById("todo-form");
 const toDoInput = document.querySelector("#todo-form input");
 const toDoList = document.getElementById("todo-list");
 
-function deleteToDo(event){
-    console.log(event);
-    console.dir(event.target); // 이러면 내부를 볼 수 있다.
-    console.dir(event.target.parentElement); // 이러면 button 내부의 property를 볼 수 있다.
-    console.dir(event.target.parentElement.innerText); // 이러면 부모인 li 안의 텍스트 보기 가능.
+const TODOS_KYE = "todos";
 
+const toDos = [];
+
+
+
+function saveToDo(){ // toDos를 저장하기
+    localStorage.setItem(TODOS_KYE, JSON.stringify(toDos));
+}
+
+function deleteToDo(event){
     const li = event.target.parentElement;// 삭제해야할 li
     li.remove(); // 삭제
 }
@@ -28,8 +33,16 @@ function paintToDo(newTodo){
 function handleToDoSubmit(event){ // submit 이벤트 후엔 자동으로 값을 넘겨준다
     event.preventDefault(); // 이벤트 진행을 막는다. 자동 새로고침 안됨.
     const newTodo = toDoInput.value;
-    paintToDo(newTodo);
     toDoInput.value = "";
+    toDos.push=newTodo;
+    paintToDo(newTodo);
 }
 
 toDoForm.addEventListener("submit", handleToDoSubmit);
+
+
+const savedToDos = localStorage.getItem(TODOS_KYE); // 로컬에 저장된 toDos 가져오기
+
+if(savedToDos){ // null이 아니면
+    const parsedToDos = JSON.parse(savedToDos); // 로컬에 저장되어 있던 목록을 객체화
+}
