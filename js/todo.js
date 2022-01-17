@@ -4,7 +4,7 @@ const toDoList = document.getElementById("todo-list");
 
 const TODOS_KYE = "todos";
 
-const toDos = [];
+let toDos = [];
 
 
 
@@ -34,8 +34,9 @@ function handleToDoSubmit(event){ // submit 이벤트 후엔 자동으로 값을
     event.preventDefault(); // 이벤트 진행을 막는다. 자동 새로고침 안됨.
     const newTodo = toDoInput.value;
     toDoInput.value = "";
-    toDos.push=newTodo;
+    toDos.push(newTodo);
     paintToDo(newTodo);
+    saveToDo()
 }
 
 toDoForm.addEventListener("submit", handleToDoSubmit);
@@ -45,4 +46,6 @@ const savedToDos = localStorage.getItem(TODOS_KYE); // 로컬에 저장된 toDos
 
 if(savedToDos){ // null이 아니면
     const parsedToDos = JSON.parse(savedToDos); // 로컬에 저장되어 있던 목록을 객체화
+    toDos = parsedToDos;
+    parsedToDos.forEach(paintToDo);
 }
