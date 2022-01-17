@@ -14,6 +14,7 @@ function saveToDo(){ // toDos를 저장하기
 
 function deleteToDo(event){
     const li = event.target.parentElement;// 삭제해야할 li
+    toDos = toDos.filter( todo => todo.id !== li.id); // 삭제한 후의 내용을 toDos에 넣어준다.
     li.remove(); // 삭제
 }
 
