@@ -26,9 +26,11 @@ const savedUsername = localStorage.getItem(USERNAME_KEY);
 
 if(savedUsername === null ){ // username이 없으면
     loginForm.classList.remove(HIDDEN_CLASSNAME);
+    console.log("username이 없다");
 }else{ // 이미 username이 있으면
-    loginForm.classList.add("hidden"); // username을 입력받을 필요 없으니 hidden한다.
+    loginForm.classList.add(HIDDEN_CLASSNAME); // username을 입력받을 필요 없으니 hidden한다.
     paintGreetings(savedUsername);
+    console.log("username이 있다");
 }
 
 loginForm.addEventListener("submit", onLoginSubmit); // 엔터나 버튼시 동작 -> 자동 새로고침
