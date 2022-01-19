@@ -11,7 +11,8 @@ function onLoginSubmit(event){ // submit 이벤트 후엔 자동으로 값을 �
     const inputUsername = loginInput.value;
     localStorage.setItem(USERNAME_KEY,inputUsername);
 
-    loginForm.classList.add("hidden");
+    // loginForm.classList.add("hidden");
+    document.getElementById("login-form").style.display="none";
     paintGreetings(inputUsername);
     
 }
@@ -25,10 +26,13 @@ function paintGreetings(username){
 const savedUsername = localStorage.getItem(USERNAME_KEY);
 
 if(savedUsername === null ){ // username이 없으면
-    loginForm.classList.remove(HIDDEN_CLASSNAME);
+    // loginForm.classList.remove(HIDDEN_CLASSNAME);
+    document.getElementById("login-form").style.display="flex";
     console.log("username이 없다");
 }else{ // 이미 username이 있으면
-    loginForm.classList.add(HIDDEN_CLASSNAME); // username을 입력받을 필요 없으니 hidden한다.
+    // loginForm.classList.add(HIDDEN_CLASSNAME); // username을 입력받을 필요 없으니 hidden한다.
+    document.getElementById("login-form").style.display="none";
+
     paintGreetings(savedUsername);
     console.log("username이 있다");
 }
